@@ -1,5 +1,5 @@
 {application, erlchat,
- [{description, "An OTP application"},
+ [{description, "erlchat app"},
   {vsn, "0.1.0"},
   {registered, []},
   {mod, { erlchat_app, []}},
