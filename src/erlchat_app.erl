@@ -24,7 +24,7 @@ start(_StartType, _StartArgs) ->
 
   {ok, _} = cowboy:start_clear(http, 100, [{port, 5059}],
           #{env => #{dispatch => Dispatch}}
-
+    ),
     erlchat_sup:start_link().
 
 %%--------------------------------------------------------------------
