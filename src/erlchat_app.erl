@@ -15,17 +15,18 @@
 %%====================================================================
 
 start(_StartType, _StartArgs) ->
+  Port=5059,
   Dispatch = cowboy_router:compile([
       {'_', [
           {"/", cowboy_static, {file, "priv/index.html"}},
           {"/assets/[...]", cowboy_static, {dir, "priv/assets"}}
       ]}
   ]),
-
-  {ok, _} = cowboy:start_clear(http, 100, [{port, 5059}],
-          #{env => #{dispatch => Dispatch}}
-    ),
-    erlchat_sup:start_link().
+  {ok, _} = cowboy:start_clear(http, [{port, Port}], #{
+		env => #{dispatch => Dispatch}
+	}),
+  io:format("Start Server : http://localhost:~w ~n",[Port]),
+  erlchat_sup:start_link().
 
 %%--------------------------------------------------------------------
 stop(_State) ->

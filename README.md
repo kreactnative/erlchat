@@ -12,3 +12,5 @@ run
 -----
 
     $ rebar3 shell
+
+http://localhost:5059
